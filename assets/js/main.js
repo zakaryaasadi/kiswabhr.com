@@ -1,4 +1,8 @@
+const a2e = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+
+
 $(document).ready(function(){
+
   $("#send").click(function(){
 
     let name = $("#name").val();
@@ -29,8 +33,8 @@ $(document).ready(function(){
     }
 
 
-    let phoneNo = Number(phone);
-    if(phoneNo < 10000000 || phoneNo > 99999999){
+    let phoneNo = Number(a2e(phone));
+    if(phoneNo < 10000000 || phoneNo > 99999999 || isNaN(phoneNo)){
       $("#phone_incorrect").css("display","block");
       return;
     }else{
